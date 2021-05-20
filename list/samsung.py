@@ -14,7 +14,7 @@ class samsung(object):
         ls = []
 
         while 1:
-            choice = int(input('0 : 종료하기 \n1 : 입력하기 \n2 : 출력하기 \n3 : 삭제하기 \n'))
+            choice = int(input('0 : 종료하기 \n1 : 입력하기 \n2 : 출력하기 \n3 : 삭제하기 \n4 : 수정하기 \n'))
             if choice == 0:
                 print('종료하겟습니다.')
                 break
@@ -28,6 +28,15 @@ class samsung(object):
                 for i, j in enumerate(ls):
                     if j.name == del_name:
                         del ls[i]
+            elif choice == 4:
+                edit_name = input('수정할 회사명 : ')
+                edit_info = samsung(edit_name, input('수정 종목코드 '), input('수정 per '), input('수정 pbr '), input('수정 배당수익률 '))
+                for i, j in enumerate(ls):
+                    if j.name == edit_name:
+                        del ls[i]
+                        ls.append(edit_info)
+
+                print('수정되었습니다.')
             else:
                 print('잘못입력하셧습니다.')
                 continue

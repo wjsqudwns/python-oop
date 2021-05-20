@@ -20,7 +20,7 @@ class contacts(object):
         ls = [] # 리스트
 
         while 1:
-            choice = int(input('0. 종료 \n' '1, 주소록 추가\n' '2. 출력 \n' '3. 삭제 \n' '4. 수정'))
+            choice = int(input('0. 종료 \n' '1, 주소록 추가\n' '2. 출력 \n' '3. 삭제 \n' '4. 수정\n'))
             if choice == 0:
                 print('작업완료')
                 break
@@ -36,7 +36,11 @@ class contacts(object):
                         del ls[i]
             elif choice == 4:
                 edit_name = input('수장할 이름 :')
-                edit_info =
+                edit_info = contacts(edit_name, input('수정 전화번호'),input('수정 이메일'),input('수정 주소'))
+                for i, j in enumerate(ls):
+                    if j.name == edit_name:
+                        del ls[i]
+                        ls.append(edit_info)
             else:
                 print('잘못입력하셧습니다.')
                 continue
