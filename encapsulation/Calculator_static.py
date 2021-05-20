@@ -1,10 +1,10 @@
 class CalculatorStatic(object):
 
-    def __init__(self, first, second):
+    def __init__(self, first, second): #생성자는 인스턴트 만들때 사용 처리할수 있는게 하나 이기때문에 단수형
         self.first = first
         self.second = second
 
-    def add(self):
+    def add(self): # default 동적메소드
         return  self.first + self.second
     def sub(self):
         return  self.first - self.second
@@ -24,4 +24,9 @@ class CalculatorStatic(object):
         print(f'{cal.first} * {cal.second} = {cal.mul()}')
         print(f'{cal.first} / {cal.second} = {cal.div()}')
 
+
+#건전지를 포함한 상태
+
+
 CalculatorStatic.main() #다른곳에서 작업을 가져올수있다
+

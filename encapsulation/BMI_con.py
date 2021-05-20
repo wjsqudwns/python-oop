@@ -16,7 +16,7 @@ class Bmi(object):
 
     def get_stat(self):
         a = self.get_bmi()
-        stat = ''
+
         if a >= 30:
             stat = '고도비반'
         elif a >= 25:

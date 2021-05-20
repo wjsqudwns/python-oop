@@ -1,5 +1,5 @@
 class Grade:
-    def __init__(self, kor, math, eng): #생성자 setter
+    def __init__(self, kor, math, eng): #생성자 setter 요소들은 0차원 묶은 집합은 1차원
         self.kor = kor  #프로퍼티
         self.math = math
         self.eng = eng
@@ -12,9 +12,9 @@ class Grade:
 
     def get_grade(self): # getter
         score = int(self.avg())
-        grade = '' #str 형식의 변수 생성
+            
         if score >= 90:
-            grade = 'A학점'
+            grade = 'A학점'   #str 형식의 변수 생성 자동으로 초가화
         elif score >= 80:
             grade = 'B학점'
         elif score >= 70:
