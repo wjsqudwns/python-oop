@@ -1,45 +1,74 @@
 import random
-
-
 class Account(object):
-    def __init__(self, name, money, plus, month):
-        self.bname = 'SC은행'
+
+    def __init__(self, account_number, name, money):
         self.name = name
         self.money = money
-        self.number = f'{int(random.uniform(0, 999))}-{int(random.uniform(0, 99))}-{int(random.uniform(0, 999999))}'
-        self.plus = plus
-        self.month = month
+        self.BNAME = 'SC은행'
+        self.account_number = account_number
 
-    def get_account_num(self):
-        return f'은행이름 : {self.bname} \n 예금주 : {self.name} \n 계좌번호 : {self.number} \n 잔액 : {self.money}'
+    def to_string(self):
+        return f'은행이름 : {self.BNAME} \n 이름 : {self.name} \n 계좌번호 {self.account_number} \n 잔액 {self.money}'
+
+    @staticmethod # 사용하는 곳이 동적 메소드에서 정적메소드로 바뀌였기 때문이다.
+    def create_account_number():
+        ls = []
+        for i in range(3):
+            ls.append(str(random.randint(0,9)))
+        ls.append('-')
+        for i in range(2):
+            ls.append(str(random.randint(0,9)))
+        ls.append('-')
+        for i in range(6):
+            ls.append(str(random.randint(0,9)))
+
+        return "".join(ls) # 공백없이 붙여라
+
+
+    @staticmethod
+    def del_element(ls,account_number):
+
+        for i, j in enumerate(ls):
+            if j.account_number == account_number:
+                del ls[i]
 
     @staticmethod
     def main():
-        ls = []
-        while 1 :
-            choice = int(input('0. 종료\n 1. 입금 \n 2. 출금 \n 3. 잔액확인 \n 4. 계좌생성 \n 5. 계좌목록 확인\n'))
-            if choice == 0 :
-                print('종료합니다.')
+        ls =[]
+        while 1:
+            menu = int(input('0.Exit 1.계좌 생성 2.계좌 출력 3.입금 4.출금 5.탈퇴'))
+            if menu == 0:
                 break
-            elif choice == 1:
-
-                edit_name = input('입금할 사람 이름')
-                edit_num = int(input('입금할 사람 계좌번호'))
-                edit_info = Account(edit_name, edit_num, input('입금할 금액'))
-
-                for i, j in enumerate(ls):
-                    if j.num == edit_num:
-                        del ls[i]
-                        ls.append(edit_info)
-            elif choice == 3:
-
-                for i, j in enumerate(ls):
-                    if j.num == edit_num:
-                        print()
-            elif choice == 4:
-                ls.append(Account(input('이름 : '), input('잔액 : ')))
-            elif choice == 5:
+            elif menu == 1:
+                ls.append(Account(Account.create_account_number(), input('name '), input('money ')))
+            elif menu == 2:
                 for i in ls:
-                    print(i.get_account_num())
+                    print(i.to_string())
+            elif menu == 3:
+
+                account_number = input('입금할 계좌번호 ')
+                money = input('입금액 : ')
+
+                for i, j in enumerate(ls):
+                    if j.account_number == account_number:
+                        replace = Account(account_number, j.name, int(j.money) + int(money))
+                        Account.del_element(ls, account_number)
+                        ls.append(replace)
+            elif menu == 4:
+
+                account_number = input('출금할 계좌번호 ')
+                money = input('출금액 : ')
+
+                for i, j in enumerate(ls):
+                    if j.account_number == account_number:
+                        replace = Account(account_number, j.name, int(j.money) - int(money))  # 인스턴스 생성
+                        Account.del_element(ls, account_number)
+                        ls.append(replace)
+
+
+            elif menu == 5:
+                Account.del_element(ls, input('탈퇴할 계좌번호'))
+
 
 Account.main()
+

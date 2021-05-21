@@ -5,7 +5,7 @@
 '''
 
 
-class contacts(object):
+class Contacts(object):
     def __init__(self, name, phone, email, adr):
         self.name = name
         self.phone = phone
@@ -14,6 +14,12 @@ class contacts(object):
 
     def get_contacts(self):
         return f'주소록 : 이름 {self.name}, 전화번호 {self.phone}, 이메일 {self.email}, 주소 {self.adr}'
+
+    @staticmethod
+    def del_name(ls, name):
+        for i, j in enumerate(ls):
+            if j.name == name:
+                del ls[i]
 
     @staticmethod
     def main():
@@ -25,25 +31,25 @@ class contacts(object):
                 print('작업완료')
                 break
             elif choice == 1:
-                ls.append(contacts(input('이름을 입력하세요 '), int(input('전화번호를 입력하세요 ')), input('이메일을 입력하세요 '), input('주소를 입력하세요 '))) # 추가하라
+                ls.append(Contacts(input('이름을 입력하세요 '), int(input('전화번호를 입력하세요 ')), input('이메일을 입력하세요 '), input('주소를 입력하세요 '))) # 추가하라
             elif choice == 2:
                 for i in ls:
                     print(i.get_contacts())
             elif choice == 3:
-                del_name = input('삭제할 이름 : ')
-                for i, j in enumerate(ls): #i는 인덱스번호  j인덱스에 해당하는 개체 -> 비교할때는 개체값 지울때는 인덱스 번호가 필요하기 때문
-                    if j.name == del_name: #이너머레이터 인덱스 값을 돌려받기 위해
-                        del ls[i]
+                dname = Contacts(input('삭제할 이름 : '), None, None, None)
+                dname.del_name(ls, dname.name)
+
             elif choice == 4:
-                edit_name = input('수장할 이름 :')
-                edit_info = contacts(edit_name, input('수정 전화번호'),input('수정 이메일'),input('수정 주소'))
-                for i, j in enumerate(ls):
-                    if j.name == edit_name:
-                        del ls[i]
-                        ls.append(edit_info)
+                name = input('수정할 이름 :')
+                cname = Contacts(name, input('수정 전화번호'),input('수정 이메일'),input('수정 주소'))
+                cname.del_name(ls, cname.name)
+                ls.append(cname)
+
             else:
                 print('잘못입력하셧습니다.')
                 continue
 
 
-contacts.main()
+Contacts.main()
+
+# 수정하고 출력이안됨
