@@ -1,4 +1,3 @@
-
 import random
 
 
@@ -44,12 +43,12 @@ class Account(object):
             return 1
 
     @staticmethod  # 리펙토링
-    def c_money( ls, account_number, money, pre):
-            for i, j in enumerate(ls):
-                if j.account_number == account_number:
-                    replace = Account(account_number, j.name, int(j.money) + int(money) * pre)
-                    Account.del_element(ls, account_number)
-                    ls.append(replace)
+    def c_money(ls, account_number, money, pre):
+        for i, j in enumerate(ls):
+            if j.account_number == account_number:
+                replace = Account(account_number, j.name, int(j.money) + int(money) * pre)
+                Account.del_element(ls, account_number)
+                ls.append(replace)
 
     @staticmethod
     def main():
@@ -80,4 +79,3 @@ class Account(object):
 
 
 Account.main()
-
