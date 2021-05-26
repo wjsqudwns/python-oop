@@ -58,4 +58,4 @@ class MelonMusic(object):
                 continue
 
 
-MelonMusic.main()
+MelonMusic.main() #태그값이 다르고 html 호환이 되는지 모르겟다.
