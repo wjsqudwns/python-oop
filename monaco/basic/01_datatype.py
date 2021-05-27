@@ -4,12 +4,16 @@
 
 '''
 python has Five standard types
+
 scalar
-Number : int, float, complex
+Number : int, float, (complex)
 String :  str -> 기본적으로 list 구조
 
 vector
 Collection : List, Tuple, Dictionary, Set
+인덱스의 유무의 따라서
+-> list tuple 시퀀스구조
+-> Dictionary set 해쉬구조
 
 ATOM(원자) = 구조가 있는 가장 작은단위
 

@@ -1,0 +1,2 @@
+class Myseries(object):
+    pass
