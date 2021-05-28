@@ -8,11 +8,11 @@ class Melon4(object):
     class_name = []  # list(스퀘어)
 
     def set_url(self, time):
-        self.url = requests.get(f'{self.url}{time}',headers= self.headers).text
+        self.url = requests.get(f'{self.url}{time}', headers= self.headers).text
 
     def get_url(self):
-        soup = BeautifulSoup(self.url,'lxml')
-        ls = soup.find_all("div",{"class" : self.class_name[0]})  #  함수안에 들어갈땐 ""
+        soup = BeautifulSoup(self.url, 'lxml')
+        ls = soup.find_all("div", {"class" : self.class_name[0]})  #  함수안에 들어갈땐 ""
         count = 0
         print("제목")
         for i in ls:
